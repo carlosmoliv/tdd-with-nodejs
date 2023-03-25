@@ -1,13 +1,9 @@
 import express from 'express';
-import { User } from './user/User';
+import UserRouter from './user/UserRouter';
 
 const app = express();
 app.use(express.json());
 
-app.post('/api/v1/users', (req, res) => {
-  User.create(req.body).then(() => {
-    return res.send({ message: 'User created.' });
-  });
-});
+app.use(UserRouter);
 
 export default app;
